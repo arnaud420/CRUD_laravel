@@ -19,7 +19,7 @@ class UserCommentairesController extends Controller
     {
         $input = $request->all();
         $user = User::findOrFail($userId);
-        $commentaire = $user->commentaires()->create($input);
+        $user->commentaires()->create($input);
         return redirect(route('users.show', compact('user')));
     }
 
