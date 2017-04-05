@@ -47,12 +47,10 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Commentaire utilisateur</h3>
+                    <h3 class="panel-title">Commentaires</h3>
                 </div>
                 <div class="panel-body text-center">
-                    <a href="#" class="btn btn-primary btn-info active" role="button">Voir</a>
-                    <a href="#" class="btn btn-primary btn-warning active" role="button">Modifier</a>
-                    <a href="#" class="btn btn-primary btn-danger active" role="button">Supprimer</a>
+                    <a href="{{route('admin.commentaires.index')}}" class="btn btn-primary btn-info active" role="button">Voir</a>
                 </div>
             </div>
         </div>

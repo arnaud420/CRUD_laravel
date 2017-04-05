@@ -11,16 +11,7 @@ class UsersController extends Controller
         $users = User::all();
         return view('front.user.index', compact('users'));
     }
-    public function create()
-    {
-        return view('front.user.create');
-    }
-    public function store(Request $request)
-    {
-        $input = $request->all();
-        User::create($input);
-        return redirect(route("users.index"))->with("success", "l'utilisateur a ete cree");
-    }
+
     public function show($id)
     {
         $user = User::findOrFail($id);
@@ -32,7 +23,7 @@ class UsersController extends Controller
         }
         else
         {
-            return view('erreur404');
+            return view('errors.404');
         }
     }
 }

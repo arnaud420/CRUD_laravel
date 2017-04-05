@@ -31,6 +31,14 @@ Route::group(['middleware' => 'isAdmin'], function () {
         'update' => 'admin.users.update',
         'destroy' => 'admin.users.destroy'
     ]]);
+    Route::resource('admin/commentaires', 'admin\AdminCommentairesController', ['names' => [
+        'index' => 'admin.commentaires.index',
+        'create' => 'admin.commentaires.create',
+        'store' => 'admin.commentaires.store',
+        'edit' => 'admin.commentaires.edit',
+        'update' => 'admin.commentaires.update',
+        'destroy' => 'admin.commentaires.destroy'
+    ]]);
 });
 
 //route de login
