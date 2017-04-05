@@ -74,7 +74,17 @@ class AdminUsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $user = User::findOrFail($id); // je recupere l user
+        $user_update= $user->update($input); //je le met a jour
+        if ($user_update)
+        {
+            return redirect(route('admin.users.index'))->with('Utilisateur mis à jour');
+        }
+        else
+        {
+            return redirect()->back()->with('Erreur lors de la mise a jour')->withInput();
+        }
     }
 
     /**
@@ -85,6 +95,14 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $count= User::destroy($id); //renverra combien ça en a supprimé
+        if($count==1)
+        {
+            return redirect(route("users.index"))->with("success", "l'user a bien ete supprime"); //je ne redirige pas vers back puisque la page (l user) n'exsite plus
+        }
+        else
+        {
+            return redirect()->back()->with("danger", "l'user n a pas ete supprime");
+        }
     }
 }
