@@ -1,26 +1,27 @@
 @extends('template')
 
 @section('titre')
-    Ajout de commentaire
+    Page de connexion
 @endsection
 
 @section('contenu')
+    <h1 class="text-center"><ins>Login</ins></h1>
 
     <div class="row">
         <div class="form-horizontal col-md-8 col-md-offset-2">
-            {!! Form::open(['route' => ['users.commentaires.store', $user]]) !!}
+            {!! Form::open(['route' => 'login.connexion']) !!}
             <fieldset>
-                <legend>Laisse un commentaire à {!! $user->prenom !!}</legend>
+                <legend>Connexion</legend>
             </fieldset>
 
             <div class="form-group">
-                {!! Form::label('auteur', 'Entre ton nom : ')  !!}
-                {!! Form::text('auteur', null, ['class' => 'form-control']) !!}
+                {!! Form::label('email', 'Entre ton email : ')  !!}
+                {!! Form::email('email', null, ['class' => 'form-control']) !!}
             </div>
 
             <div class="form-group">
-                {!! Form::label('contenu', 'Entre ton commentaire : ') !!}
-                {!! Form::text('contenu', null, ['class' => 'form-control']) !!}
+                {!! Form::label('password', 'Entre ton mot de passe : ') !!}
+                {!! Form::password('password', ['class' => 'form-control']) !!}
             </div>
 
             <div class="form-group">

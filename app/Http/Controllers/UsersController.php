@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Commentaire;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -25,8 +24,15 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        $commentaires = $user->commentaires()->get(); //récupére la fonction commentaires correspondant à l'id de l'user situé dans le model User
-        $notes = $user->notes()->get();
-        return view('front.user.show', compact('user', 'commentaires', 'notes')); //return view('front.user.show', compact('user'))->with('commentaires', $commentaires);
+        if ($user)
+        {
+            $commentaires = $user->commentaires()->get(); //récupére la fonction commentaires correspondant à l'id de l'user situé dans le model User
+            $notes = $user->notes()->get();
+            return view('front.user.show', compact('user', 'commentaires', 'notes')); //return view('front.user.show', compact('user'))->with('commentaires', $commentaires);
+        }
+        else
+        {
+            return view('erreur404');
+        }
     }
 }

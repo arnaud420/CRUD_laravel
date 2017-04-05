@@ -1,4 +1,4 @@
-@extends('front.template')
+@extends('template')
 
 @section('titre')
     Espace étudiant
@@ -8,13 +8,13 @@
     <h1 class="text-center"><ins>Espace étudiants</ins></h1>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <table class="table">
+                <table class="table table-striped">
                     <caption>Liste des élèves</caption>
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nom</th>
-                                <th>Prenom</th>
+                                <th>NOM</th>
+                                <th>PRENOM</th>
                             </tr>
                         </thead>
                         <tbody>

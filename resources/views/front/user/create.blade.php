@@ -1,4 +1,4 @@
-@extends('front.template')
+@extends('template')
 
 @section('titre')
     Iscription utilisateur

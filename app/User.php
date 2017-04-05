@@ -2,10 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable
 {
     protected $table = 'users';
     protected $fillable = array("id", "password", "nom", "prenom", "created_at", "updated_at", "remember_token", "email");
@@ -15,9 +15,10 @@ class User extends Model
     {
         $this->attributes["password"] = Hash::make($value);
     }
+
     public function commentaires()
     {
-        return $this->hasMany('App\Commentaire', 'user_id', 'id'); // créer la jointure
+        return $this->hasMany('App\Commentaire', 'user_id', 'id'); // crée la jointure
     }
 
     public function notes()
