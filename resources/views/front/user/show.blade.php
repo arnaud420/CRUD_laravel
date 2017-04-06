@@ -12,29 +12,38 @@
                 <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ $user->email }}</p>
                     <p><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Ses notes :</p>
                         @foreach($notes as $note)
-                            <span>{{ $note->note }}/</span>
+                            <span>{{ $note->note }}/20</span>
                         @endforeach
         </div>
     </div>
 
+    <h2>Commentaires :</h2>
+
     <div class="row">
-        <div class="col-md-12">
-            <h2>Commentaires :</h2>
-                <p>Liste de comentaires ...</p>
-
-            <div class="row">
-                <div class="col-md-12">
-                    @foreach($commentaires as $commentaire)
-                        <em>Posté le {{ $commentaire->created_at }} par {{ $commentaire->auteur }}</em>
-                        <p>{{ $commentaire->contenu }}</p>
-                    @endforeach
-                </div>
-            </div>
-
-            <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
-                <a href="{{ route('users.commentaires.create', compact('user')) }}" class="btn btn-default" role="button">Ajoute un commentaire à {{ $user->prenom }}</a>
+        @foreach($commentaires as $commentaire)
+        <div class="col-md-1">
+            <div class="thumbnail">
+                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
             </div>
         </div>
+
+        <div class="col-md-11">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>{{ $commentaire->auteur }}</strong> <span class="text-muted">posté le {{ $commentaire->created_at }}</span>
+                </div>
+                <div class="panel-body">
+                    {{ $commentaire->contenu }}
+                </div>
+            </div>
+        </div>
+        @endforeach
     </div>
+
+    <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+        <a href="{{ route('users.commentaires.create', compact('user')) }}" class="btn btn-primary btn-lg active" role="button">Ajoute un commentaire à {{ $user->prenom }}</a>
+    </div>
+
+
 
 @endsection
