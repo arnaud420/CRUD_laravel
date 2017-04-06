@@ -12,19 +12,19 @@
             {!! Form::open(['route' => 'admin.users.store']) !!}
 
             <div class="form-group">
-            {!! Form::label('nom', 'Entrez votre nom : ') !!}
+            {!! Form::label('nom', 'Entrez le nom de l étudiant : ') !!}
             {!! Form::text('nom', null, ['class' => 'form-control']) !!}
             </div>
                 <div class="form-group">
-            {!! Form::label('prenom', 'Entrez votre prenom : ') !!}
+            {!! Form::label('prenom', 'Entrez le prenom de l étudiant : ') !!}
             {!! Form::text('prenom', null, ['class' => 'form-control']) !!}
                 </div>
                     <div class="form-group">
-            {!! Form::label('email', 'Entrez votre email : ') !!}
+            {!! Form::label('email', 'Entrez l email de l étudiant : ') !!}
             {!! Form::email('email', null, ['class' => 'form-control']) !!}
                     </div>
                         <div class="form-group">
-            {!! Form::label('password', 'Entrez votre mot de passe : ') !!}
+            {!! Form::label('password', 'Entrez le mot de passe de l étudiant : ') !!}
             {!! Form::password('password', ['class' => 'form-control']) !!}
                         </div>
                             <div class="form-group">

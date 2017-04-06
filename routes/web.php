@@ -29,7 +29,8 @@ Route::group(['middleware' => 'isAdmin'], function () {
         'store' => 'admin.users.store',
         'edit' => 'admin.users.edit',
         'update' => 'admin.users.update',
-        'destroy' => 'admin.users.destroy'
+        'destroy' => 'admin.users.destroy',
+        'show' => 'admin.users.show'
     ]]);
     Route::resource('admin/commentaires', 'admin\AdminCommentairesController', ['names' => [
         'index' => 'admin.commentaires.index',
@@ -37,7 +38,8 @@ Route::group(['middleware' => 'isAdmin'], function () {
         'store' => 'admin.commentaires.store',
         'edit' => 'admin.commentaires.edit',
         'update' => 'admin.commentaires.update',
-        'destroy' => 'admin.commentaires.destroy'
+        'destroy' => 'admin.commentaires.destroy',
+        'show' => 'admin.commentaires.show'
     ]]);
 });
 

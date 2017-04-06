@@ -19,47 +19,11 @@ class AdminCommentairesController extends Controller
         return view('back.commentaires.index', compact('commentaires'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $commentaire = Commentaire::findOrFail($id);
+        return view('back.commentaires.edit', compact('commentaire'));
     }
 
     /**
@@ -71,7 +35,17 @@ class AdminCommentairesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $commentaire = Commentaire::findOrFail($id);
+        $commentaire_update = $commentaire->update($input);
+        if ($commentaire_update)
+        {
+            return redirect(route('admin.commentaires.index'))->with('Utilisateur mis à jour');
+        }
+        else
+        {
+            return redirect()->back()->with('Erreur lors de la mise a jour')->withInput();
+        }
     }
 
     /**
@@ -82,6 +56,14 @@ class AdminCommentairesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $count= Commentaire::destroy($id); //renverra combien ça en a supprimé
+        if($count==1)
+        {
+            return redirect(route("admin.commentaires.index"))->with("success", "l'user a bien ete supprime"); //je ne redirige pas vers back puisque la page (l user) n'exsite plus
+        }
+        else
+        {
+            return redirect()->back()->with("danger", "l'user n a pas ete supprime");
+        }
     }
 }
