@@ -87,7 +87,7 @@ class AdminNotesController extends Controller
         $note_update= $note->update($input);
         if ($note_update)
         {
-            return redirect(route('admin.notes.index'))->with('Note mis à jour');
+            return redirect(route('admin.notes.index', compact('user', 'note')))->with('Note mis à jour');
         }
         else
         {
