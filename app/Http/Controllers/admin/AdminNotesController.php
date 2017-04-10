@@ -101,12 +101,13 @@ class AdminNotesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user_id, $note_id)
     {
-        $count= Note::destroy($id);
+        $user = User::findOrFail($user_id);
+        $count= Note::destroy($note_id);
         if($count==1)
         {
-            return redirect(route("users.index"))->with("success", "l'user a bien ete supprime"); //je ne redirige pas vers back puisque la page (l user) n'exsite plus
+            return redirect(route("admin.notes.index", compact('user', 'note')))->with("success", "l'user a bien ete supprime"); //je ne redirige pas vers back puisque la page (l user) n'exsite plus
         }
         else
         {
