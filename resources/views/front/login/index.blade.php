@@ -6,7 +6,9 @@
 
 @section('contenu')
     <h1 class="text-center"><ins>Login</ins></h1>
-
+    @if (Auth::check())
+        <h2 class="text-center">Bonjour et bienvenu {{Auth::user()->nom}}, {{Auth::user()->prenom}}</h2>
+    @else
     <div class="row">
         <div class="form-horizontal col-md-8 col-md-offset-2">
             {!! Form::open(['route' => 'login.connexion']) !!}
@@ -31,4 +33,5 @@
             {!! Form::close() !!}
         </div>
     </div>
+    @endif
 @endsection

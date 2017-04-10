@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Note;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 
-class AdminUsersController extends Controller
+class AdminNotesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $users = User::all();
-        return view('back.users.index', compact('users'));
+        $user = User::findOrFail($id);
+        $notes = $user->notes()->get();
+        return view('back.notes.index', compact('user', 'notes'));
     }
 
     /**
@@ -24,9 +26,10 @@ class AdminUsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($user_id)
     {
-        return view('back.users.create');
+        $user = User::findOrFail($user_id);
+        return view('back.notes.create', compact('user'));
     }
 
     /**
@@ -35,11 +38,12 @@ class AdminUsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $user_id)
     {
         $input = $request->all();
-        User::create($input);
-        return redirect(route("admin.users.index"))->withOk("success", "l'utilisateur a ete cree");
+        $user = User::findOrFail($user_id);
+        $user->notes()->create($input);
+        return redirect(route("admin.notes.index", compact('user')))->withOk("success", "la note a ete cree");
     }
 
     /**
@@ -59,10 +63,12 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($user_id, $note_id)
     {
-        $user = User::findOrFail($id);
-        return view('back.users.edit', compact('user'));
+        $user = User::findOrFail($user_id);
+        $user->notes()->get();
+        $note = $user->notes()->findOrFail($note_id);
+        return view('back.notes.edit', compact('user', 'note'));
     }
 
     /**
@@ -72,14 +78,16 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user_id, $note_id)
     {
         $input = $request->all();
-        $user = User::findOrFail($id); // je recupere l user
-        $user_update= $user->update($input); //je le met a jour
-        if ($user_update)
+        $user = User::findOrFail($user_id);
+        $note = $user->notes()->findOrFail($note_id);
+
+        $note_update= $note->update($input);
+        if ($note_update)
         {
-            return redirect(route('admin.users.index'))->with('Utilisateur mis à jour');
+            return redirect(route('admin.notes.index'))->with('Note mis à jour');
         }
         else
         {
@@ -95,7 +103,7 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        $count= User::destroy($id); //renverra combien ça en a supprimé
+        $count= Note::destroy($id);
         if($count==1)
         {
             return redirect(route("users.index"))->with("success", "l'user a bien ete supprime"); //je ne redirige pas vers back puisque la page (l user) n'exsite plus

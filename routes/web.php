@@ -12,7 +12,7 @@
 */
 
 //page d'accueil
-Route::get('/', ['uses' => 'WelcomeController@index', 'as' => 'home']);
+Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home']);
 
 //route utilisateurs
 Route::resource('users', 'UsersController');
@@ -40,6 +40,15 @@ Route::group(['middleware' => 'isAdmin'], function () {
         'update' => 'admin.commentaires.update',
         'destroy' => 'admin.commentaires.destroy',
         'show' => 'admin.commentaires.show'
+    ]]);
+    Route::resource('admin/users.notes', 'admin\AdminNotesController', ['names' => [
+        'index' => 'admin.notes.index',
+        'create' => 'admin.notes.create',
+        'store' => 'admin.notes.store',
+        'edit' => 'admin.notes.edit',
+        'update' => 'admin.notes.update',
+        'destroy' => 'admin.notes.destroy',
+        'show' => 'admin.notes.show'
     ]]);
 });
 

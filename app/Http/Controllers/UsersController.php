@@ -17,9 +17,9 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         if ($user)
         {
-            $commentaires = $user->commentaires()->get(); //récupére la fonction commentaires correspondant à l'id de l'user situé dans le model User
+            $commentaires = $user->commentaires()->orderBy('id', 'DESC')->get(); //récupére la fonction commentaires correspondant à l'id de l'user situé dans le model User
             $notes = $user->notes()->get();
-            return view('front.user.show', compact('user', 'commentaires', 'notes')); //return view('front.user.show', compact('user'))->with('commentaires', $commentaires);
+            return view('front.user.show', compact('user', 'commentaires', 'notes'));
         }
         else
         {

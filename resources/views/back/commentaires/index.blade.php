@@ -26,7 +26,7 @@
                         <th><a href="commentaires/{{ $commentaire->id }}/edit" class="btn btn-primary btn-warning active" role="button">Modifier</a></th>
                         <th>
                             {!! Form::open(['method' => 'DELETE', 'route' => ['admin.commentaires.destroy', $commentaire->id]]) !!}
-                                {!! Form::submit('Supprimer', ['class' => 'btn btn-primary btn-danger', 'onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet utilisateur ?\')']) !!}
+                                {!! Form::submit('Supprimer', ['class' => 'btn btn-primary btn-danger', 'onclick' => 'return confirm(\'Voulez-vous vraiment supprimer ce commentaire ?\')']) !!}
                             {!! Form::close() !!}
                         </th>
                     </tr>
