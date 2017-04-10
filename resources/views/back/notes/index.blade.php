@@ -26,7 +26,7 @@
                         <th>{{ $note->note }}</th>
                         <th><a href="notes/{{$note->id}}/edit" class="btn btn-primary btn-warning active" role="button">Modifier</a></th>
                         <th>
-                            {!! Form::open(['method' => 'DELETE', 'route' => ['admin.notes.destroy', $user->id, $note]]) !!}
+                            {!! Form::open(['method' => 'DELETE', 'route' => ['adminusers.notes.destroy', $user->id, $note]]) !!}
                                 {!! Form::submit('Supprimer', ['class' => 'btn btn-primary btn-danger', 'onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cette note ?\')']) !!}
                             {!! Form::close() !!}
                         </th>

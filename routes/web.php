@@ -21,35 +21,11 @@ Route::resource('users', 'UsersController');
 Route::resource('users.commentaires', 'UserCommentairesController', array('parameters' => 'singulier'));
 
 //route admin
-Route::group(['middleware' => 'isAdmin'], function () {
-    Route::get('admin', ['uses' => 'admin\AdminController@index', 'as' => 'admin']);
-    Route::resource('admin/users', 'admin\AdminUsersController', ['names' => [
-        'index' => 'admin.users.index',
-        'create' => 'admin.users.create',
-        'store' => 'admin.users.store',
-        'edit' => 'admin.users.edit',
-        'update' => 'admin.users.update',
-        'destroy' => 'admin.users.destroy',
-        'show' => 'admin.users.show'
-    ]]);
-    Route::resource('admin/commentaires', 'admin\AdminCommentairesController', ['names' => [
-        'index' => 'admin.commentaires.index',
-        'create' => 'admin.commentaires.create',
-        'store' => 'admin.commentaires.store',
-        'edit' => 'admin.commentaires.edit',
-        'update' => 'admin.commentaires.update',
-        'destroy' => 'admin.commentaires.destroy',
-        'show' => 'admin.commentaires.show'
-    ]]);
-    Route::resource('admin/users.notes', 'admin\AdminNotesController', ['names' => [
-        'index' => 'admin.notes.index',
-        'create' => 'admin.notes.create',
-        'store' => 'admin.notes.store',
-        'edit' => 'admin.notes.edit',
-        'update' => 'admin.notes.update',
-        'destroy' => 'admin.notes.destroy',
-        'show' => 'admin.notes.show'
-    ]]);
+Route::group(['middleware' => 'isAdmin', 'as' => 'admin'], function () {
+    Route::get('admin', 'admin\AdminController@index');
+    Route::resource('admin/users', 'admin\AdminUsersController');
+    Route::resource('admin/commentaires', 'admin\AdminCommentairesController');
+    Route::resource('admin/users.notes', 'admin\AdminNotesController');
 });
 
 //route de login

@@ -40,7 +40,7 @@ class AdminCommentairesController extends Controller
         $commentaire_update = $commentaire->update($input);
         if ($commentaire_update)
         {
-            return redirect(route('admin.commentaires.index'))->with('Utilisateur mis à jour');
+            return redirect(route('admincommentaires.index'))->with('Utilisateur mis à jour');
         }
         else
         {
@@ -59,7 +59,7 @@ class AdminCommentairesController extends Controller
         $count= Commentaire::destroy($id); //renverra combien ça en a supprimé
         if($count==1)
         {
-            return redirect(route("admin.commentaires.index"))->with("success", "l'user a bien ete supprime"); //je ne redirige pas vers back puisque la page (l user) n'exsite plus
+            return redirect(route("admincommentaires.index"))->with("success", "l'user a bien ete supprime"); //je ne redirige pas vers back puisque la page (l user) n'exsite plus
         }
         else
         {

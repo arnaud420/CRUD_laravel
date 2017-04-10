@@ -8,7 +8,7 @@
     <h1 class="text-center"><ins>Modification des notes de {{$user->nom}}</ins></h1>
     <div class="row">
         <div class="form-horizontal col-md-8 col-md-offset-2">
-            {!! Form::open(['route' => ['admin.notes.update', $user, $note], 'method' => 'put', 'class' => 'form-horizontal panel']) !!}
+            {!! Form::open(['route' => ['adminusers.notes.update', $user, $note], 'method' => 'put', 'class' => 'form-horizontal panel']) !!}
 
             <div class="form-group">
                 {!! Form::label('note', 'Entrez la nouvelle note : ') !!}

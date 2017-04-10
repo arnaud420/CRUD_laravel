@@ -39,7 +39,7 @@ class AdminUsersController extends Controller
     {
         $input = $request->all();
         User::create($input);
-        return redirect(route("admin.users.index"))->withOk("success", "l'utilisateur a ete cree");
+        return redirect(route("adminusers.index"))->withOk("success", "l'utilisateur a ete cree");
     }
 
     /**
@@ -79,7 +79,7 @@ class AdminUsersController extends Controller
         $user_update= $user->update($input); //je le met a jour
         if ($user_update)
         {
-            return redirect(route('admin.users.index'))->with('Utilisateur mis à jour');
+            return redirect(route('adminusers.index'))->with('Utilisateur mis à jour');
         }
         else
         {
@@ -98,7 +98,7 @@ class AdminUsersController extends Controller
         $count= User::destroy($id); //renverra combien ça en a supprimé
         if($count==1)
         {
-            return redirect(route("users.index"))->with("success", "l'user a bien ete supprime"); //je ne redirige pas vers back puisque la page (l user) n'exsite plus
+            return redirect(route("adminusers.index"))->with("success", "l'user a bien ete supprime");
         }
         else
         {

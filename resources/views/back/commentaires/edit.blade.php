@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="form-horizontal col-md-8 col-md-offset-2">
-            {!! Form::open(['route' => ['admin.commentaires.update', $commentaire->id], 'method' => 'put', 'class' => 'form-horizontal panel']) !!}
+            {!! Form::open(['route' => ['admincommentaires.update', $commentaire->id], 'method' => 'put', 'class' => 'form-horizontal panel']) !!}
 
             <div class="form-group">
                 {!! Form::label('contenu', 'Entrez le nouveau commentaire : ') !!}

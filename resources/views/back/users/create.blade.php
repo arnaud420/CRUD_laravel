@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="form-horizontal col-md-8 col-md-offset-2">
-            {!! Form::open(['route' => 'admin.users.store']) !!}
+            {!! Form::open(['route' => 'adminusers.store']) !!}
 
             <div class="form-group">
             {!! Form::label('nom', 'Entrez le nom de l étudiant : ') !!}

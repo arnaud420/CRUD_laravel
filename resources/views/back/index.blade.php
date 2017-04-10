@@ -20,8 +20,8 @@
                     <h3 class="panel-title">Utilisateur - Notes</h3>
                 </div>
                 <div class="panel-body text-center">
-                    <a href="{{route('admin.users.index')}}" class="btn btn-primary btn-info active" role="button">Liste étudiant</a>
-                    <a href="{{route('admin.users.create')}}" class="btn btn-primary btn-success active" role="button">Ajouter un étudiant</a>
+                    <a href="{{route('adminusers.index')}}" class="btn btn-primary btn-info active" role="button">Liste étudiant</a>
+                    <a href="{{route('adminusers.create')}}" class="btn btn-primary btn-success active" role="button">Ajouter un étudiant</a>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
                     <h3 class="panel-title">Commentaires</h3>
                 </div>
                 <div class="panel-body text-center">
-                    <a href="{{route('admin.commentaires.index')}}" class="btn btn-primary btn-info active" role="button">Liste commentaires</a>
+                    <a href="{{route('admincommentaires.index')}}" class="btn btn-primary btn-info active" role="button">Liste commentaires</a>
                 </div>
             </div>
         </div>

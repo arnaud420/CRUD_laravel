@@ -43,7 +43,7 @@ class AdminNotesController extends Controller
         $input = $request->all();
         $user = User::findOrFail($user_id);
         $user->notes()->create($input);
-        return redirect(route("admin.notes.index", compact('user')))->withOk("success", "la note a ete cree");
+        return redirect(route("adminusers.notes.index", compact('user')))->withOk("success", "la note a ete cree");
     }
 
     /**
@@ -87,7 +87,7 @@ class AdminNotesController extends Controller
         $note_update= $note->update($input);
         if ($note_update)
         {
-            return redirect(route('admin.notes.index', compact('user', 'note')))->with('Note mis à jour');
+            return redirect(route('adminusers.notes.index', compact('user', 'note')))->with('Note mis à jour');
         }
         else
         {
@@ -107,7 +107,7 @@ class AdminNotesController extends Controller
         $count= Note::destroy($note_id);
         if($count==1)
         {
-            return redirect(route("admin.notes.index", compact('user', 'note')))->with("success", "l'user a bien ete supprime"); //je ne redirige pas vers back puisque la page (l user) n'exsite plus
+            return redirect(route("adminusers.notes.index", compact('user', 'note')))->with("success", "l'user a bien ete supprime"); //je ne redirige pas vers back puisque la page (l user) n'exsite plus
         }
         else
         {

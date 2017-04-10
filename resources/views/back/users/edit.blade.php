@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="form-horizontal col-md-8 col-md-offset-2">
-            {!! Form::open(['route' => ['admin.users.update', $user->id], 'method' => 'put', 'class' => 'form-horizontal panel']) !!}
+            {!! Form::open(['route' => ['adminusers.update', $user->id], 'method' => 'put', 'class' => 'form-horizontal panel']) !!}
 
             <div class="form-group">
                 {!! Form::label('nom', 'Entrez le nouveau nom : ') !!}

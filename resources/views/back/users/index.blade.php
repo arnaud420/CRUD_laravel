@@ -25,7 +25,7 @@
                         <th>{!! $user->prenom !!}</th>
                         <th><a href="users/{{ $user->id }}/notes" class="btn btn-primary btn-info active" role="button">Voir notes</a></th>
                         <th><a href="users/{{ $user->id }}/edit" class="btn btn-primary btn-warning active" role="button">Modifier</a></th>
-                        <th>{!! Form::open(['method' => 'DELETE', 'route' => ['admin.users.destroy', $user->id]]) !!}
+                        <th>{!! Form::open(['method' => 'DELETE', 'route' => ['adminusers.destroy', $user->id]]) !!}
                                 {!! Form::submit('Supprimer', ['class' => 'btn btn-primary btn-danger', 'onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet utilisateur ?\')']) !!}
                             {!! Form::close() !!}
                         </th>
