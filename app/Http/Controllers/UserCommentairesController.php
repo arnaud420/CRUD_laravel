@@ -26,15 +26,6 @@ class UserCommentairesController extends Controller
             $input['auteur'] = Auth::user()->prenom;
             $user->commentaires()->create($input);
         }
-        //$user = User::findOrFail($userId);
-        //$user->commentaires()->create($input);
-
-        /*$user = User::findOrFail($userId);
-        $contenu = $request->input('contenu');
-        $auteur = Auth::user()->prenom;
-        $user->commentaires()->create($contenu, $auteur);*/
-
-
         return redirect(route('users.show', compact('user')));
     }
 
