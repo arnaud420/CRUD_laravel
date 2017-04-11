@@ -15,6 +15,7 @@
                     <th>#</th>
                     <th>Auteur</th>
                     <th>Commentaire</th>
+                    <th>Date</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -23,6 +24,7 @@
                         <th>{!! $commentaire->id !!}</th>
                         <th>{!! $commentaire->auteur !!}</th>
                         <th>{!! $commentaire->contenu !!}</th>
+                        <th>{{$commentaire->created_at}}</th>
                         <th><a href="commentaires/{{ $commentaire->id }}/edit" class="btn btn-primary btn-warning active" role="button">Modifier</a></th>
                         <th>
                             {!! Form::open(['method' => 'DELETE', 'route' => ['admincommentaires.destroy', $commentaire->id]]) !!}

@@ -10,10 +10,11 @@
         <div class="col-md-12">
             <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ $user->nom }}, {{ $user->prenom }}</h2>
                 <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ $user->email }}</p>
-                    <p><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Ses notes :</p>
+                    <p><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Ses notes =>
                         @foreach($notes as $note)
-                            <span>{{ $note->note }}/20</span>
+                            <span><strong><mark>{{ $note->note }}/20</mark></strong></span>
                         @endforeach
+                    </p>
         </div>
     </div>
 
