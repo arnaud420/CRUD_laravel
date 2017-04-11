@@ -12,7 +12,7 @@
 
             <div class="form-group">
                 {!! Form::label('note', 'Entrez la nouvelle note : ') !!}
-                {!! Form::number('note', null, ['class' => 'form-control']) !!}
+                {!! Form::text('note', null, ['class' => 'form-control']) !!}
             </div>
 
             <div class="form-group">

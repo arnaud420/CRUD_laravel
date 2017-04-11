@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use AdamWathan\Form\Elements\Input;
+use App\Commentaire;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,13 @@ class UserCommentairesController extends Controller
     {
         $input = $request->all();
         $user = User::findOrFail($userId);
-        $user->commentaires()->create($input);
+        if (Auth::check())
+        {
+            $input['auteur'] = Auth::user()->prenom;
+            $user->commentaires()->create($input);
+        }
+        //$user = User::findOrFail($userId);
+        //$user->commentaires()->create($input);
 
         /*$user = User::findOrFail($userId);
         $contenu = $request->input('contenu');

@@ -14,7 +14,8 @@ class LoginController extends Controller
     public function connexion(Request $request)
     {
         $input = $request->all();
-        Auth::attempt(array('email' => $input['email'],
+        Auth::attempt(array(
+            'email' => $input['email'],
             'password' => $input['password']));
 
         if(Auth::check())   //Vérifie si l'user est connecté
@@ -23,7 +24,7 @@ class LoginController extends Controller
         }
         else //si l'user n'est pas conecté
         {
-            return redirect(route('home'))->With("info", "Vous êtes PAS bien connecté");
+            return redirect(route('login.index'))->With("info", "Vous êtes PAS bien connecté");
         }
     }
     public function deconnexion()

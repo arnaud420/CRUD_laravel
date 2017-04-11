@@ -6,17 +6,13 @@
 
 @section('contenu')
 
+    @if (\Illuminate\Support\Facades\Auth::check())
     <div class="row">
         <div class="form-horizontal col-md-8 col-md-offset-2">
             {!! Form::open(['route' => ['users.commentaires.store', $user]]) !!}
             <fieldset>
                 <legend>Laisse un commentaire à {!! $user->prenom !!}</legend>
             </fieldset>
-
-            <div class="form-group">
-                {!! Form::label('auteur', 'Entre ton nom : ')  !!}
-                {!! Form::text('auteur', null, ['class' => 'form-control']) !!}
-            </div>
 
             <div class="form-group">
                 {!! Form::label('contenu', 'Entre ton commentaire : ') !!}
@@ -30,4 +26,8 @@
             {!! Form::close() !!}
         </div>
     </div>
+    @else
+        <h2 class="text-center text-danger">Attention : Il faut être connecté pour laisser un commentaire !</h2>
+            <h3 class="text-center"><a href="{{route('login.index')}}">Clique pour te connecter</a></h3>
+    @endif
 @endsection

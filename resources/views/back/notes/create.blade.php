@@ -12,7 +12,7 @@
             {!! Form::open(['route' => ['adminusers.notes.store', $user]]) !!}
             <div class="form-group">
                 {!! Form::label('note', 'Entrez la note de l étudiant : ') !!}
-                {!! Form::number('note', null, ['class' => 'form-control']) !!}
+                {!! Form::text('note', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::submit('Envoyer', ['class' => 'btn btn-primary pull-right']) !!}
