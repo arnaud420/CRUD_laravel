@@ -11,7 +11,7 @@
         <div class="form-horizontal col-md-8 col-md-offset-2">
             {!! Form::open(['route' => ['users.commentaires.store', $user]]) !!}
             <fieldset>
-                <legend>Laisse un commentaire à {!! $user->prenom !!}</legend>
+                <legend>Laisse un commentaire à {{ $user->prenom }}</legend>
             </fieldset>
 
             <div class="form-group">

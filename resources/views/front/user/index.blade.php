@@ -20,10 +20,10 @@
                         <tbody>
                         @foreach($users as $user)
                             <tr>
-                                <th>{!! $user->id !!}</th>
-                                <th>{!! $user->nom !!}</th>
-                                <th>{!! $user->prenom !!}</th>
-                                <th><a href="users/{!! $user->id !!}">voir détail</a></th>
+                                <th>{{ $user->id }}</th>
+                                <th>{{ $user->nom }}</th>
+                                <th>{{ $user->prenom }}</th>
+                                <th><a href="users/{{ $user->id }}">voir détail</a></th>
                             </tr>
                         @endforeach
                         </tbody>
