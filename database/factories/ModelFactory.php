@@ -10,6 +10,7 @@
 | database. Just tell the factory how a default model should look.
 |
 */
+use Illuminate\Support\Facades\Hash;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\User::class, function (Faker\Generator $faker) {
@@ -19,7 +20,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'prenom' => $faker->firstName,
         'nom' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'password' => $password ?: $password = hash::make('secret'),
         'remember_token' => str_random(10),
     ];
 });

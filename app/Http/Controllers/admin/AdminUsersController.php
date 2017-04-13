@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
+use Barryvdh\Debugbar\Middleware\Debugbar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Intervention\Image\Facades\Image;
 
 class AdminUsersController extends Controller
 {
@@ -37,8 +39,28 @@ class AdminUsersController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        User::create($input);
+        if ($request->hasFile('avatar'))
+        {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
+
+            $newUser = new User(array(
+                "nom" => $request->input("nom"),
+                "password" => $request->input("password"),
+                "email" => $request->input("email"),
+                "prenom" => $request->input("prenom")
+            ));
+            $newUser->avatar = $filename;
+            $newUser->save();
+        }
+
+        else
+        {
+            $input = $request->all();
+            User::create($input);
+        }
+
         return redirect(route("adminusers.index"))->withOk("success", "l'utilisateur a ete cree");
     }
 

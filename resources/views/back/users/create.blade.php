@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="form-horizontal col-md-8 col-md-offset-2">
-            {!! Form::open(['route' => 'adminusers.store']) !!}
+            {!! Form::open(['route' => 'adminusers.store','novalidate' => 'novalidate',  'files' => true]) !!}
 
             <div class="form-group">
             {!! Form::label('nom', 'Entrez le nom de l étudiant : ') !!}
@@ -27,6 +27,10 @@
             {!! Form::label('password', 'Entrez le mot de passe de l étudiant : ') !!}
             {!! Form::password('password', ['class' => 'form-control']) !!}
                         </div>
+            <div class="form-group">
+                {!! Form::label('avatar', 'Avatar') !!}
+                {!! Form::file('avatar', null) !!}
+            </div>
                             <div class="form-group">
             {!! Form::submit('Envoyer', ['class' => 'btn btn-primary pull-right']) !!}
                             </div>

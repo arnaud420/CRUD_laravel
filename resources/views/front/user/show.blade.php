@@ -8,7 +8,8 @@
     <h1 class="text-center"><ins>Profil de l'étudiant :</ins></h1>
     <div class="row">
         <div class="col-md-12">
-            <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ $user->nom }}, {{ $user->prenom }}</h2>
+            <img src="/uploads/avatars/{{ $user->avatar }}" style="width: 150px; height: 150px; float: left; margin-right: 15px;">
+            <h2>{{ $user->nom }}, {{ $user->prenom }}</h2>
                 <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ $user->email }}</p>
                     <p><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Ses notes =>
                         @foreach($notes as $note)
@@ -24,7 +25,7 @@
         @foreach($commentaires as $commentaire)
         <div class="col-md-1">
             <div class="thumbnail">
-                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                <img class="img-responsive user-photo" src="/uploads/avatars/{{ $user->avatar }}">
             </div>
         </div>
 

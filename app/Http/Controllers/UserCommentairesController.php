@@ -6,6 +6,7 @@ use App\Commentaire;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 class UserCommentairesController extends Controller
 {
