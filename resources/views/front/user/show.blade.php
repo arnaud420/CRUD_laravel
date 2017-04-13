@@ -23,13 +23,13 @@
 
     <div class="row">
         @foreach($commentaires as $commentaire)
-        <div class="col-md-1">
+        <!--<div class="col-md-1">
             <div class="thumbnail">
                 <img class="img-responsive user-photo" src="/uploads/avatars/{{ $user->avatar }}">
             </div>
-        </div>
+        </div>-->
 
-        <div class="col-md-11">
+        <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <strong>{{ $commentaire->auteur }}</strong> <span class="text-muted">posté le {{ $commentaire->created_at }}</span>
