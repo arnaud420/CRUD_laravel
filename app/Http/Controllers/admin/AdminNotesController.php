@@ -17,7 +17,7 @@ class AdminNotesController extends Controller
     public function index($id)
     {
         $user = User::findOrFail($id);
-        $notes = $user->notes()->get();
+        $notes = $user->notes()->select('id', 'note')->get();
         return view('back.notes.index', compact('user', 'notes'));
     }
 

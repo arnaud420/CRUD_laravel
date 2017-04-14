@@ -17,7 +17,8 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        // $users = User::all(); retourne toutes les entrées
+        $users = User::select('nom', 'prenom', 'id')->get(); //requête select
         return view('back.users.index', compact('users'));
     }
 

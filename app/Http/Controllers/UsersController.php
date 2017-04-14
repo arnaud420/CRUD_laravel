@@ -8,17 +8,17 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::select('nom', 'prenom', 'id')->get();
         return view('front.user.index', compact('users'));
     }
 
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($id); //verifie si il y a un user
         if ($user)
         {
-            $commentaires = $user->commentaires()->orderBy('id', 'DESC')->get(); //récupére la fonction commentaires correspondant à l'id de l'user situé dans le model User
-            $notes = $user->notes()->get();
+            $commentaires = $user->commentaires()->select('contenu', 'auteur', 'created_at')->orderBy('id', 'DESC')->get(); //récupére la fonction commentaires correspondant à l'id de l'user situé dans le model User
+            $notes = $user->notes()->select('note')->get();
             return view('front.user.show', compact('user', 'commentaires', 'notes'));
         }
         else
