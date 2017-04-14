@@ -25,7 +25,7 @@
                         <th><a href="{{route('adminavatars.edit', $user )}}" class="btn btn-primary btn-warning active" role="button">Modifier avatar</a></th>
                         <th>
                             {!! Form::open(['method' => 'DELETE', 'route' => ['adminavatars.destroy', $user->id]]) !!}
-                                {!! Form::submit('Supprimer avatar', ['class' => 'btn btn-primary btn-danger', 'onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cette note ?\')']) !!}
+                                {!! Form::submit('Supprimer avatar', ['class' => 'btn btn-primary btn-danger', 'onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet avatar ?\')']) !!}
                             {!! Form::close() !!}
                         </th>
                     </tr>

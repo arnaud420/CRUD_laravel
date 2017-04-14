@@ -102,6 +102,6 @@ class AdminAvatarsController extends Controller
         $avatar = $user->avatar;
         File::delete(public_path('/uploads/avatars/' . $avatar));
 
-        return redirect(route("adminavatars.index"))->with("success", "l'image a bien ete supprime");
+        return redirect(route("adminavatars.index"))->with("success", "l'avatar a bien ete supprime");
     }
 }
