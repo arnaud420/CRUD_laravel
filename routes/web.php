@@ -43,10 +43,10 @@ Route::get('sitemap', function(){
     if (!$sitemap->isCached())
     {
         // add item to the sitemap (url, date, priority, freq)
-        $sitemap->add(route('home'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
-        $sitemap->add(route('login'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
-        $sitemap->add(route('users'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
-        $sitemap->add(route('users.commentaires'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
+        $sitemap->add(URL::to('/'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
+        $sitemap->add(URL::to('users'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
+        $sitemap->add(URL::to('login'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
+        $sitemap->add(URL::to('admin'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
 
         // get all posts from db
         $posts = DB::table('commentaires')->orderBy('created_at', 'desc')->get();
@@ -54,7 +54,7 @@ Route::get('sitemap', function(){
         // add every post to the sitemap
         foreach ($posts as $post)
         {
-            $sitemap->add($post->auteur, $post->contenu);
+            $sitemap->add($post->auteur, $post->contenu, $post->created_at);
         }
     }
 

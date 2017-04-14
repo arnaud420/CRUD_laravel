@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="form-horizontal col-md-8 col-md-offset-2">
-            {!! Form::open(['route' => 'adminavatars.store','novalidate' => 'novalidate',  'files' => true]) !!}
+            {!! Form::open(['route' => 'adminavatars.store',  'files' => true]) !!}
 
             <div class="form-group">
                 {!! Form::label('avatar', 'Avatar') !!}

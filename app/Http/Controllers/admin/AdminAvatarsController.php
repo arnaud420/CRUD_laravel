@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 class AdminAvatarsController extends Controller
 {
@@ -73,22 +74,16 @@ class AdminAvatarsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if ($request->hasFile('avatar'))
-        {
-            $user = User::findOrFail($id);
+        if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
             Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
 
+            $user = User::findOrFail($id);
             $user->avatar = $filename;
-            $avatar_update = $filename->update();
-            if ($avatar_update)
-            {
-                return redirect(route('adminavatars.index'));
-            }
-            else
-            {
-                return redirect()->back()->with('Erreur lors de la mise a jour')->withInput();
+            $avatar_update = $user->update($filename);
+            if ($avatar_update) {
+                return redirect(route('adminavatars.index'))->with('Utilisateur mis à jour');
             }
         }
 
@@ -104,17 +99,9 @@ class AdminAvatarsController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
+        $avatar = $user->avatar;
+        File::delete(public_path('/uploads/avatars/' . $avatar));
 
-        $avatar= $user->avatar;
-        $count = $avatar->delete();
-
-        if($count==1)
-        {
-            return redirect(route("adminusers.index"))->with("success", "l'user a bien ete supprime");
-        }
-        else
-        {
-            return redirect()->back()->with("danger", "l'user n a pas ete supprime");
-        }
+        return redirect(route("adminavatars.index"))->with("success", "l'image a bien ete supprime");
     }
 }
