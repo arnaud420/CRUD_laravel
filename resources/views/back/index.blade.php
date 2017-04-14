@@ -47,23 +47,7 @@
                     <h3 class="panel-title">Avatar utilisateur</h3>
                 </div>
                 <div class="panel-body text-center">
-                    <a href="#" class="btn btn-primary btn-info active" role="button">Voir</a>
-                    <a href="#" class="btn btn-primary btn-success active" role="button">Ajouter</a>
-                    <a href="#" class="btn btn-primary btn-warning active" role="button">Modifier</a>
-                    <a href="#" class="btn btn-primary btn-danger active" role="button">Supprimer</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Tag commentaire</h3>
-                </div>
-                <div class="panel-body text-center">
-                    <a href="#" class="btn btn-primary btn-success active" role="button">Ajouter</a>
+                    <a href="{{route('adminavatars.index')}}" class="btn btn-primary btn-info active" role="button">Voir les avatars</a>
                 </div>
             </div>
         </div>

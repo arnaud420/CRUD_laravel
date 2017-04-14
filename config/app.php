@@ -165,6 +165,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Roumen\Sitemap\SitemapServiceProvider::class,
 
 
         /*

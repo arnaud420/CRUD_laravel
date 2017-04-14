@@ -5,12 +5,15 @@
 @endsection
 
 @section('contenu')
-    <h1 class="text-center"><ins>Ajout / modification / suppression notes</ins></h1>
-    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ $user->nom }}, {{ $user->prenom }}</h2>
-    <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ $user->email }}</p>
-    <p>
-        <a href="notes/create" class="btn btn-primary btn-success active" role="button">Ajouter une note</a>
-    </p>
+    <div class="row">
+        <h1 class="text-center"><ins>Ajout / modification / suppression notes</ins></h1>
+        <img src="/uploads/avatars/{{ $user->avatar }}" style="width: 150px; height: 150px; float: left; margin-right: 15px;">
+        <h2> {{ $user->nom }}, {{ $user->prenom }}</h2>
+        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ $user->email }}</p>
+        <p>
+            <a href="notes/create" class="btn btn-primary btn-success active" role="button">Ajouter une note</a>
+        </p>
+    </div>
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
