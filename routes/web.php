@@ -46,7 +46,9 @@ Route::get('sitemap', function(){
         $sitemap->add(URL::to('/'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
         $sitemap->add(URL::to('users'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
         $sitemap->add(URL::to('login'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
+        $sitemap->add(URL::to('logout'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
         $sitemap->add(URL::to('admin'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
+        $sitemap->add(URL::to('users.commentaires'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
 
         // get all posts from db
         $posts = DB::table('commentaires')->orderBy('created_at', 'desc')->get();
