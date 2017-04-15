@@ -6,6 +6,7 @@ use App\Note;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\NoteRequest;
 
 class AdminNotesController extends Controller
 {
@@ -38,7 +39,7 @@ class AdminNotesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $user_id)
+    public function store(NoteRequest $request, $user_id)
     {
         $input = $request->all();
         $user = User::findOrFail($user_id);
@@ -78,7 +79,7 @@ class AdminNotesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $user_id, $note_id)
+    public function update(NoteRequest $request, $user_id, $note_id)
     {
         $input = $request->all();
         $user = User::findOrFail($user_id);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Barryvdh\Debugbar\Middleware\Debugbar;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use App\User;
 use Intervention\Image\Facades\Image;
@@ -38,7 +39,7 @@ class AdminUsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         if ($request->hasFile('avatar'))
         {

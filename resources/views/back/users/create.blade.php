@@ -14,18 +14,22 @@
             <div class="form-group">
             {!! Form::label('nom', 'Entrez le nom de l étudiant : ') !!}
             {!! Form::text('nom', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('nom', '<small class="help-block">:message</small>') !!}
             </div>
                 <div class="form-group">
             {!! Form::label('prenom', 'Entrez le prenom de l étudiant : ') !!}
             {!! Form::text('prenom', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('prenom', '<small class="help-block">:message</small>') !!}
                 </div>
                     <div class="form-group">
             {!! Form::label('email', 'Entrez l email de l étudiant : ') !!}
             {!! Form::email('email', null, ['class' => 'form-control']) !!}
+                        {!! $errors->first('email', '<small class="help-block">:message</small>') !!}
                     </div>
                         <div class="form-group">
             {!! Form::label('password', 'Entrez le mot de passe de l étudiant : ') !!}
             {!! Form::password('password', ['class' => 'form-control']) !!}
+                            {!! $errors->first('password', '<small class="help-block">:message</small>') !!}
                         </div>
             <div class="form-group">
                 {!! Form::label('avatar', 'Avatar') !!}

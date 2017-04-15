@@ -17,6 +17,7 @@
             <div class="form-group">
                 {!! Form::label('contenu', 'Entre ton commentaire : ') !!}
                 {!! Form::text('contenu', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('contenu', '<small class="help-block">:message</small>') !!}
             </div>
 
             <div class="form-group">

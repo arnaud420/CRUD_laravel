@@ -13,6 +13,7 @@
             <div class="form-group">
                 {!! Form::label('note', 'Entrez la nouvelle note : ') !!}
                 {!! Form::text('note', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('note', '<small class="help-block">:message</small>') !!}
             </div>
 
             <div class="form-group">

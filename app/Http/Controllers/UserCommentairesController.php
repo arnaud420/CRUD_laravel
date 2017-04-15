@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use AdamWathan\Form\Elements\Input;
-use App\Commentaire;
+
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
+use App\Http\Requests\CommentaireRequest;
 
 class UserCommentairesController extends Controller
 {
@@ -18,7 +17,7 @@ class UserCommentairesController extends Controller
 
     }
 
-    public function store(Request $request, $userId)
+    public function store(CommentaireRequest $request, $userId)
     {
         $input = $request->all();
         $user = User::findOrFail($userId);

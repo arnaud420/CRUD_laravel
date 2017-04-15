@@ -13,6 +13,7 @@
             <div class="form-group">
                 {!! Form::label('note', 'Entrez la note de l étudiant : ') !!}
                 {!! Form::text('note', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('note', '<small class="help-block">:message</small>') !!}
             </div>
             <div class="form-group">
                 {!! Form::submit('Envoyer', ['class' => 'btn btn-primary pull-right']) !!}

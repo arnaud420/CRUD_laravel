@@ -74,21 +74,18 @@ class AdminAvatarsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if ($request->hasFile('avatar')) {
+        if ($request->hasFile('avatar'))
+        {
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
             Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
 
-            $user = User::findOrFail($id);
+            $user= User::findOrFail($id);
             $user->avatar = $filename;
-            $avatar_update = $user->update($filename);
-            if ($avatar_update) {
-                return redirect(route('adminavatars.index'))->with('Utilisateur mis à jour');
-            }
-        }
+            $filename->save();
 
 
-    }
+    }}
 
     /**
      * Remove the specified resource from storage.
